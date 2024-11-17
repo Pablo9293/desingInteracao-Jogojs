@@ -1,0 +1,140 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 10px;
+    background: linear-gradient(to bottom, #6995a7, #477e41); 
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+  }
+  #gameTitle {
+    font-size: 2rem;
+    color: #a71327;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  #game {
+    position: relative;
+    width: 90vw; /* Ocupa 90% da largura da tela */
+    height: 75vh; /* Ocupa 75% da altura da tela */
+    max-width: 500px;
+    border: 2px solid #1809eb;
+    background-image: url('imagem/cenario.jpeg');
+    background-size: cover; /* Ajusta o tamanho para cobrir toda a area*/
+    background-repeat: no-repeat;/* Remove repetições*/
+    background-position: center; /*Centraliza a imagem*/
+    border-radius: 10px;
+    padding: 5px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 0 auto;
+  }
+
+#gameOverMessage {
+  display: none; /* Oculta inicialmente */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  animation: blink 1s infinite; /* Animação para piscar */
+}
+  
+ @media (orientation: portrait) {
+    #game {
+      height: 65vh; /* Ajuste extra no modo retrato */
+    }
+  }
+  @media (orientation: landscape) {
+    #game {
+      height: 600vh; /* Reduz um pouco a altura no modo paisagem */
+   }
+  }
+  
+  #mario, #obstacle {
+    position: absolute;
+    bottom: 0;
+  }
+  
+  #mario {
+    width: 50px;
+    height: 50px;
+    background-image: url('imagem/mario.jpeg');
+    background-size: cover;
+    left: 5%;
+  }
+  #obstacle {
+    width: 50px;
+    height: 50px;
+    background-image: url('imagem/papaMario.png'); /* Certifique-se de ter a imagem correta */
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0;
+    right: 0; /* Começa fora da tela à direita */
+    animation: moveObstacle 1s linear infinite; /* Ajuste a duração para controlar a velocidade */
+  }
+  
+  
+  #score {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1.2rem;
+    color:rgb(73, 19, 9);
+  }
+  
+  /*Estilos dos botões */
+ .control-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .control-btn:hover {
+    background-color: #004d40;
+  }
+  
+  /*Esconde os botões quando necessário */
+ #jumpBtn, #restartBtn {
+    display: none;
+  }
+  
+  /* Animação do obstáculo */
+ @keyframes moveObstacle {
+    from {
+      right: -50px;
+    }
+    to {
+      right: 100%;
+    }
+  }
+  
+  
+  /* Animação do pulo */
+  @keyframes jumpAnimation {
+    0% { bottom: 20px; }
+    50% { bottom: 120px; } /* Ajuste a altura do salto aqui */
+   100% { bottom: 20px; }
+  }
+  
+  .jump {
+    animation: jumpAnimation 0.80s ease-out; /* Duração ajustada para o pulo */
+  }
+  
+
+ 
